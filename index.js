@@ -122,7 +122,7 @@ function handleOff(event) {
   console.log("handleOff");
   let message = "Translator bot is turn off!"
 
-  if (!LIVE_STATUS_MAP.has(event?.channel_id)) {
+  if (LIVE_STATUS_MAP.has(event?.channel_id)) {
     LIVE_STATUS_MAP.set(event?.channel_id, false);
   }
 
@@ -133,6 +133,7 @@ function handleStatus(event) {
   console.log("handleStatus");
   
   let status = LIVE_STATUS_MAP.get(event?.channel_id, false);
+  console.log("status: ", status);
   let message = "Translator bot status is " + (status ? "on" : "off") + "\n"
 
   if (LANG_MAP.has(event?.channel_id)){
