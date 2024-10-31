@@ -23,20 +23,27 @@ $ yarn start
 ```
 
 ## COMMANDS
+```bash
 !live
+```
   turn on translator bot to auto translate message from channel
-
+```bash
 !off
+```
   turn off translator bot, message will be not translate
-
+```bash
 !status
+```
   return current status of translator bot
-
+```bash
 !lang
+```
   set language from to
-
+```bash
 !list
+```
   return all language code
-
+```bash
 !help
+```
   list all command
