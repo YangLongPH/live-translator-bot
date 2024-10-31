@@ -65,3 +65,8 @@ $ yarn start
 
 ## List all language code feature
 ![List](/public/image/list.png)
+
+## Live Translate feature
+![translate](/public/image/translate1.png)
+![translate](/public/image/translate2.png)
+![translate](/public/image/translate3.png)
