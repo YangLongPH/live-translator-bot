@@ -47,3 +47,21 @@ $ yarn start
 !help
 ```
   list all command
+
+## Help
+![Help](/public/image/help.png)
+
+## Turn on bot feature
+![Live](/public/image/live.png)
+
+## Turn off bot feature
+![Off](/public/image/off.png)
+
+## Status feature
+![Status](/public/image/status.png)
+
+## Set language feature
+![Language](/public/image/lang.png)
+
+## List all language code feature
+![List](/public/image/list.png)
