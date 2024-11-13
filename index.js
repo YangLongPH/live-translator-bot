@@ -19,8 +19,9 @@ LIVE_COMMAND = "live";
 OFF_COMMAND = "off";
 STATUS_COMMAND = "status";
 HELP_COMMAND = "help";
-LANG_COMMAND = "lang"
-LANG_LIST_COMMAND = "list"
+LANG_COMMAND = "lang";
+LANG_LIST_COMMAND = "list";
+DEBUG_COMMAND = "debug";
 
 HELP_MESSAGE = `COMMANDS
 !live
@@ -102,6 +103,9 @@ function handleCommand(command, event) {
     case LANG_LIST_COMMAND:
       handleLangList(event);
       break;
+    case DEBUG_COMMAND:
+      handleDebug(event);
+      break;
     // default:
       // handleTranslate(event);
   }
@@ -111,9 +115,7 @@ function handleLive(event) {
   console.log("handleLive");
   let message = "Translator bot is turn on!"
 
-  if (!LIVE_STATUS_MAP.has(event?.channel_id)) {
-    LIVE_STATUS_MAP.set(event?.channel_id, true);
-  }
+  LIVE_STATUS_MAP.set(event?.channel_id, true);
 
   sendRef(event, message);
 }
@@ -122,9 +124,7 @@ function handleOff(event) {
   console.log("handleOff");
   let message = "Translator bot is turn off!"
 
-  if (LIVE_STATUS_MAP.has(event?.channel_id)) {
-    LIVE_STATUS_MAP.set(event?.channel_id, false);
-  }
+  LIVE_STATUS_MAP.set(event?.channel_id, false);
 
   sendRef(event, message);
 }
@@ -132,7 +132,7 @@ function handleOff(event) {
 function handleStatus(event) {
   console.log("handleStatus");
   
-  let status = LIVE_STATUS_MAP.get(event?.channel_id, false);
+  let status = LIVE_STATUS_MAP.get(event?.channel_id);
   console.log("status: ", status);
   let message = "Translator bot status is " + (status ? "on" : "off") + "\n"
 
@@ -221,6 +221,14 @@ function handleLangList(event) {
     .filter(item => !valueToIgnore.includes(item))
     .map(key => key+ " "+ languages[key]);
   let message = lines.join("\n");
+  sendRef(event, message);
+}
+
+function handleDebug(event) {
+  console.log("handleDebug");
+  let message = "Status map: " + JSON.stringify(Array.from(LIVE_STATUS_MAP.entries())) + "\n";
+  message+= "Lang map: " + JSON.stringify(Array.from(LANG_MAP.entries()))
+
   sendRef(event, message);
 }
 
